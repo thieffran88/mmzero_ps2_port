@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include "ps2_port.h"
+#include "ps2_video.h"
 
 #ifdef _EE
 #include <kernel.h>
 #endif
 
 int main(void) {
+    if (mmz_video_init() != 0) return 1;
     printf("Mega Man Zero PS2 Port - bootstrap\n");
     game_init();
 

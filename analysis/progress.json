@@ -1,5 +1,5 @@
 {
-  "phase": "ROM reconnaissance / asset discovery",
+  "phase": "Asset reconnaissance + PS2 renderer foundation",
   "status": "in_progress",
   "rom": {
     "title": "MEGAMAN ZERO",
@@ -35,13 +35,17 @@
         "decompressed_size": 1728,
         "compressed_size": 370
       }
-    ]
+    ],
+    "palette_candidate_windows": 643643,
+    "reference_project": "mstan/MegaManZeroRecomp (external reference only)",
+    "host_syntax_check": "passed"
   },
   "next": [
-    "reference/pointer analysis",
-    "tile/palette detection",
-    "map format detection",
-    "first PS2 native renderer"
+    "ROM pointer/reference graph",
+    "prove one asset chain: pointer -> LZ77 -> palette -> tiles",
+    "recover tilemap/room format",
+    "PS2 texture upload of recovered asset",
+    "gameplay subsystem reimplementation"
   ],
   "build": {
     "ps2sdk_present": false

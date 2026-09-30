@@ -1,88 +1,24 @@
-# Mega Man Zero — PS2 Port Project
+# Mega Man Zero — PS2 Native Port
 
-Projeto experimental para reimplementar/adaptar **Mega Man Zero (GBA)** para PlayStation 2.
+Independent research/port project targeting the PlayStation 2.
 
-> A ROM original fornecida pelo usuário é tratada como material de referência local. Ela não é redistribuída pelo projeto.
+## Current phase
 
-## Objetivo
+**Phase 2: asset reconnaissance + PS2 renderer foundation.**
 
-Criar uma versão nativa para PS2, preservando a lógica e o conteúdo essencial do jogo, mas substituindo o runtime GBA por uma arquitetura adequada ao PS2.
+The project has a validated GBA LZ77 extractor, diagnostic 4bpp tile renderer,
+BGR555 palette candidate scanner, an asset-bank abstraction, and a gsKit-backed
+PS2 video layer.
 
-### Alvos
+The supplied ROM is used locally for analysis. The project archive does not
+need to redistribute the ROM itself.
 
-- PlayStation 2 real
-- PCSX2 para desenvolvimento/testes
-- 60 FPS como objetivo inicial
-- 240p/480i/480p conforme o modo escolhido
-- controles DualShock 2
-- áudio e efeitos nativos do PS2
-- carregamento por dados próprios, sem executar código ARM da ROM
+## Build status
 
-## Arquitetura inicial
+Host-side C syntax checks pass. A native PS2 build is not claimed yet because
+PS2SDK/gsKit are not installed in the current build environment. PS2SDK and
+gsKit are the intended target toolchain.
 
-```text
-GBA ROM / referências
-        |
-        +--> tools/rom_analyzer.py
-        |
-        +--> dados extraídos (futuro)
-                    |
-                    v
-              game data layer
-                    |
-        +-----------+-----------+
-        |                       |
-        v                       v
-  game logic               PS2 renderer/audio/input
-        |                       |
-        +-----------+-----------+
-                    v
-              PS2 executable
-```
+## References
 
-A ideia é **reimplementar** a máquina de jogo, não emular o GBA inteiro. Um emulador GBA dentro do PS2 continua sendo uma possível rota de protótipo, mas não é a arquitetura-alvo.
-
-## Estrutura
-
-- `src/` — runtime nativo PS2
-- `include/` — headers do projeto
-- `tools/` — ferramentas de análise/conversão
-- `docs/` — especificação e descobertas
-- `assets/` — dados convertidos; a ROM original não é copiada para distribuição
-- `build/` — artefatos locais
-
-## Primeiro marco
-
-1. Identificar a ROM e seu cabeçalho.
-2. Criar um executável PS2 mínimo.
-3. Criar uma camada de input/render independente do jogo.
-4. Mapear gráficos, mapas, animações e tabelas da ROM.
-5. Reimplementar player/física.
-6. Reimplementar inimigos, armas e chefes.
-7. Menus, missões, save e áudio.
-8. Otimização e testes no PCSX2/console.
-
-## Build PS2
-
-O build nativo depende de um ambiente PS2Dev/PS2SDK configurado. O Makefile detecta `PS2SDK`/`PS2DEV` quando disponíveis.
-
-## Build do analisador
-
-O analisador da ROM é Python puro:
-
-```bash
-python3 tools/rom_analyzer.py "/caminho/Mega Man Zero (USA, Europe).gba"
-```
-
-
-## Current progress
-
-### Phase 1 — ROM reconnaissance
-- [x] Verify ROM size/header/hash.
-- [x] Validate Nintendo LZ77 streams instead of blindly matching `0x10`.
-- [x] Generate `analysis/rom_scan/lz77_manifest.json`.
-- [x] Extract the largest validated compressed blocks for inspection.
-- [ ] Classify graphics/maps/audio by code references.
-- [ ] Implement first PS2-native asset renderer.
-
-See `docs/ROM_ANALYSIS.md`.
+See `docs/EXTERNAL_REFERENCES.md` and `docs/PHASE2.md`.
