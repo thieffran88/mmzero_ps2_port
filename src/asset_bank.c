@@ -28,7 +28,8 @@ int mmz_asset_decode_gba_lz77(const uint8_t *src, uint32_t src_size,
                 si += 2;
                 uint32_t len = (pair >> 12) + 3;
                 uint32_t disp = (pair & 0x0FFF) + 1;
-                if (disp > di || di + len > want) return -5;
+                if (disp > di) return -5;
+                if (len > want - di) len = want - di;
                 while (len--) {
                     dst[di] = dst[di - disp];
                     ++di;

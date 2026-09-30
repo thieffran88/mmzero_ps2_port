@@ -1,5 +1,5 @@
 {
-  "phase": "Asset reconnaissance + PS2 renderer foundation",
+  "phase": "Phase 3 \u2014 ROM reference graph + asset pipeline",
   "status": "in_progress",
   "rom": {
     "title": "MEGAMAN ZERO",
@@ -38,14 +38,20 @@
     ],
     "palette_candidate_windows": 643643,
     "reference_project": "mstan/MegaManZeroRecomp (external reference only)",
-    "host_syntax_check": "passed"
+    "host_syntax_check": "passed",
+    "rom_sha1": "193b14120119162518a73c70876f0b8bffdbd96e",
+    "tile_aligned_lz77_streams": 9,
+    "direct_pointer_refs": 26,
+    "referenced_lz77_streams": 26,
+    "lz77_validation": "849/849 streams match declared output data",
+    "decoder_edge_case_fixed": "final back-reference is clamped to declared output size"
   },
   "next": [
-    "ROM pointer/reference graph",
-    "prove one asset chain: pointer -> LZ77 -> palette -> tiles",
-    "recover tilemap/room format",
-    "PS2 texture upload of recovered asset",
-    "gameplay subsystem reimplementation"
+    "recover indirect/base-address data tables for large graphics streams",
+    "identify one complete asset chain: LZ77 + palette + dimensions + tilemap",
+    "offline-convert recovered asset to PS2 CLUT texture",
+    "upload and render first authentic game-derived asset with gsKit",
+    "begin room/entity renderer"
   ],
   "build": {
     "ps2sdk_present": false
