@@ -73,3 +73,16 @@ O analisador da ROM é Python puro:
 ```bash
 python3 tools/rom_analyzer.py "/caminho/Mega Man Zero (USA, Europe).gba"
 ```
+
+
+## Current progress
+
+### Phase 1 — ROM reconnaissance
+- [x] Verify ROM size/header/hash.
+- [x] Validate Nintendo LZ77 streams instead of blindly matching `0x10`.
+- [x] Generate `analysis/rom_scan/lz77_manifest.json`.
+- [x] Extract the largest validated compressed blocks for inspection.
+- [ ] Classify graphics/maps/audio by code references.
+- [ ] Implement first PS2-native asset renderer.
+
+See `docs/ROM_ANALYSIS.md`.

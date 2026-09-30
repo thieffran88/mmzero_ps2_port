@@ -1,0 +1,49 @@
+{
+  "phase": "ROM reconnaissance / asset discovery",
+  "status": "in_progress",
+  "rom": {
+    "title": "MEGAMAN ZERO",
+    "game_code": "AZCE",
+    "size": 8388608,
+    "sha256": "cf505422d68295fba36136a49a3c9dedb104ab16aa542edaeecbb89efdd57807"
+  },
+  "findings": {
+    "valid_lz77_streams": 849,
+    "largest_streams": [
+      {
+        "offset": "0x30E534",
+        "decompressed_size": 65536,
+        "compressed_size": 14462
+      },
+      {
+        "offset": "0x311EB4",
+        "decompressed_size": 65536,
+        "compressed_size": 15388
+      },
+      {
+        "offset": "0x317110",
+        "decompressed_size": 31872,
+        "compressed_size": 11210
+      },
+      {
+        "offset": "0x315AD0",
+        "decompressed_size": 16384,
+        "compressed_size": 5440
+      },
+      {
+        "offset": "0x319DFC",
+        "decompressed_size": 1728,
+        "compressed_size": 370
+      }
+    ]
+  },
+  "next": [
+    "reference/pointer analysis",
+    "tile/palette detection",
+    "map format detection",
+    "first PS2 native renderer"
+  ],
+  "build": {
+    "ps2sdk_present": false
+  }
+}

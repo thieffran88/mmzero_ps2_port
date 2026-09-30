@@ -2,7 +2,7 @@
 # Requires a configured PS2DEV/PS2SDK environment.
 
 EE_BIN = mmzero_ps2.elf
-EE_OBJS = src/main.o src/game.o
+EE_OBJS = src/main.o src/game.o src/asset_bank.o
 EE_INCS = -Iinclude
 
 ifdef PS2SDK
