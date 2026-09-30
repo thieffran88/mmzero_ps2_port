@@ -1,0 +1,10 @@
+{
+  "name": "Mega Man Zero PS2 Port",
+  "status": "bootstrap",
+  "source_platform": "GBA",
+  "target_platform": "PlayStation 2",
+  "runtime_strategy": "native_reimplementation",
+  "emulator_target": "PCSX2",
+  "source_rom_filename": "Mega Man Zero (USA, Europe).gba",
+  "source_rom_sha256": "cf505422d68295fba36136a49a3c9dedb104ab16aa542edaeecbb89efdd57807"
+}
